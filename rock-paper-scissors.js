@@ -21,8 +21,36 @@ function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
     let firstLetter = playerSelection.charAt(0).toUpperCase();
     playerSelection = firstLetter + playerSelection.substring(1);
+
+    //Compare playerSelection to computerSelection to determine winner
+    let roundWinner;
+    if (playerSelection === computerSelection) {
+        roundWinner = "It's a tie!";
+    }
+    else if (playerSelection === "Rock" && computerSelection === "Scissors") {
+        roundWinner = "You Win! Rock beats Scissors";
+    }
+    else if (playerSelection === "Paper" && computerSelection === "Scissors") {
+        roundWinner = "You Lose! Scissors beats Paper!";
+    }
+    else if (playerSelection === "Paper" && computerSelection === "Rock") {
+        roundWinner = "You Win! Paper beats Rock!";
+    }
+    else if (playerSelection === "Scissors" && computerSelection === "Rock") {
+        roundWinner = "You Lose! Rock beats Scissors!";
+    }
+    else if (playerSelection === "Scissors" && computerSelection === "Paper") {
+        roundWinner = "You Win! Scissors beats Paper!";
+    }
+    else if (playerSelection === "Rock" && computerSelection === "Paper") {
+        roundWinner = "You Lose! Paper beats Rock!";
+    }
+    else {
+        roundWinner = "You did not pick one of the three: Rock, Paper, or Scissors.";
+    }
+    return roundWinner;
 }
 
 let playerSelection = "RoCK";
 let computerSelection = getComputerChoice();
-playRound(playerSelection, computerSelection);
+console.log(playRound(playerSelection, computerSelection));
