@@ -71,6 +71,7 @@ function game() {
 
         }
     }
+    console.log(`Final Score:\nUser: ${playerWin}\tComputer: ${computerWin}`);
     if (playerWin > computerWin) {
         console.log("You win the game!");
     }
