@@ -78,6 +78,9 @@ function game() {
     else if (playerWin < computerWin) {
         console.log("You lose the game!");
     }
+    else {
+        console.log("It's a tie! Wow!");
+    }
 }
 
 game();
