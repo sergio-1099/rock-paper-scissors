@@ -58,6 +58,7 @@ function game() {
     for (let i = 0; i < 5; i++){
         let computerSelection = getComputerChoice();
         let playerSelection = prompt("Choose Rock, Paper, or Scissors:", "");
+        console.log(`You chose ${playerSelection} and the computer chose ${computerSelection}!`);
         let roundWinner = playRound(playerSelection, computerSelection);
         console.log(roundWinner);
         if (roundWinner === "You Win! Rock beats Scissors!" || roundWinner === "You Win! Paper beats Rock!" || roundWinner === "You Win! Scissors beats Paper!") {
