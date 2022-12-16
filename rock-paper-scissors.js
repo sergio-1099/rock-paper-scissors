@@ -54,20 +54,20 @@ function playRound(playerSelection, computerSelection) {
 function game() {
     let playerWin = 0;
     let computerWin = 0;
-    let computerSelection = getComputerChoice();
-    let playerSelection = prompt("Choose Rock, Paper, or Scissors:", "");
     
     for (let i = 0; i < 5; i++){
-        playRound(playerSelection, computerSelection);
+        let computerSelection = getComputerChoice();
+        let playerSelection = prompt("Choose Rock, Paper, or Scissors:", "");
+        let roundWinner = playRound(playerSelection, computerSelection);
         console.log(roundWinner);
         if (roundWinner === "You Win! Rock beats Scissors!" || roundWinner === "You Win! Paper beats Rock!" || roundWinner === "You Win! Scissors beats Paper!") {
             playerWin++;
         }
-        else if (roundWinner === "It's a tie!" || roundWinner === "You did not pick one of the three: Rock, Paper, or Scissors.") {
-
+        else if (roundWinner === "You Lose! Scissors beats Paper!" || roundWinner === "You Lose! Rock beats Scissors!" || roundWinner === "You Lose! Paper beats Rock!") {
+            computerWin++;
         }
         else {
-            computerWin++;
+
         }
     }
     if (playerWin > computerWin) {
@@ -77,3 +77,5 @@ function game() {
         console.log("You lose the game!");
     }
 }
+
+game();
