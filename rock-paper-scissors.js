@@ -3,6 +3,7 @@ function getComputerChoice() {
     let randomNum = Math.floor(Math.random() * 3) + 1;
     let choice;
 
+    //Assigns choice to computer depending on randomly generated number
     if (randomNum === 1) {
         choice = "Rock";
     }
@@ -52,15 +53,25 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game() {
+    //Declares and initializes score variables
     let playerWin = 0;
     let computerWin = 0;
     
+    //Repeats loop/game 5 times
     for (let i = 0; i < 5; i++){
+        
+        //Gets user input and generates computer choice
         let computerSelection = getComputerChoice();
         let playerSelection = prompt("Choose Rock, Paper, or Scissors:", "");
+
+        //logs the computer's and user's choice 
         console.log(`You chose ${playerSelection} and the computer chose ${computerSelection}!`);
+
+        //plays a round
         let roundWinner = playRound(playerSelection, computerSelection);
         console.log(roundWinner);
+
+        //Checks who won and assigns a point accordingly (no point if tie)
         if (roundWinner === "You Win! Rock beats Scissors!" || roundWinner === "You Win! Paper beats Rock!" || roundWinner === "You Win! Scissors beats Paper!") {
             playerWin++;
         }
@@ -71,6 +82,8 @@ function game() {
 
         }
     }
+
+    //Prints final score and displays final message depending on the scores
     console.log(`Final Score:\nUser: ${playerWin}\tComputer: ${computerWin}`);
     if (playerWin > computerWin) {
         console.log("You win the game!");
@@ -83,4 +96,6 @@ function game() {
     }
 }
 
+
+//calls the game function
 game();
