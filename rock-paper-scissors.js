@@ -55,7 +55,7 @@ function game() {
     let playerWin = 0;
     let computerWin = 0;
     let computerSelection = getComputerChoice();
-    let playerSelection = prompt("");
+    let playerSelection = prompt("Choose Rock, Paper, or Scissors:", "");
     
     for (let i = 0; i < 5; i++){
         playRound(playerSelection, computerSelection);
@@ -70,8 +70,10 @@ function game() {
             computerWin++;
         }
     }
+    if (playerWin > computerWin) {
+        console.log("You win the game!");
+    }
+    else if (playerWin < computerWin) {
+        console.log("You lose the game!");
+    }
 }
-
-let playerSelection = "RoCK";
-let computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
