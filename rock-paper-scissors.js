@@ -59,6 +59,7 @@ function game() {
     
     for (let i = 0; i < 5; i++){
         playRound(playerSelection, computerSelection);
+        console.log(roundWinner);
         if (roundWinner === "You Win! Rock beats Scissors!" || roundWinner === "You Win! Paper beats Rock!" || roundWinner === "You Win! Scissors beats Paper!") {
             playerWin++;
         }
