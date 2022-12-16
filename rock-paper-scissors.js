@@ -12,8 +12,17 @@ function getComputerChoice() {
     else {
         choice = "Scissors";
     }
-    
+
     return choice;
 }
 
-getComputerChoice();
+function playRound(playerSelection, computerSelection) {
+    //Make the player selection case-insensitive
+    playerSelection = playerSelection.toLowerCase();
+    let firstLetter = playerSelection.charAt(0).toUpperCase();
+    playerSelection = firstLetter + playerSelection.substring(1);
+}
+
+let playerSelection = "RoCK";
+let computerSelection = getComputerChoice();
+playRound(playerSelection, computerSelection);
