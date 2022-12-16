@@ -28,7 +28,7 @@ function playRound(playerSelection, computerSelection) {
         roundWinner = "It's a tie!";
     }
     else if (playerSelection === "Rock" && computerSelection === "Scissors") {
-        roundWinner = "You Win! Rock beats Scissors";
+        roundWinner = "You Win! Rock beats Scissors!";
     }
     else if (playerSelection === "Paper" && computerSelection === "Scissors") {
         roundWinner = "You Lose! Scissors beats Paper!";
@@ -49,6 +49,26 @@ function playRound(playerSelection, computerSelection) {
         roundWinner = "You did not pick one of the three: Rock, Paper, or Scissors.";
     }
     return roundWinner;
+}
+
+function game() {
+    let playerWin = 0;
+    let computerWin = 0;
+    let computerSelection = getComputerChoice();
+    let playerSelection = prompt("");
+    
+    for (let i = 0; i < 5; i++){
+        playRound(playerSelection, computerSelection);
+        if (roundWinner === "You Win! Rock beats Scissors!" || roundWinner === "You Win! Paper beats Rock!" || roundWinner === "You Win! Scissors beats Paper!") {
+            playerWin++;
+        }
+        else if (roundWinner === "It's a tie!" || roundWinner === "You did not pick one of the three: Rock, Paper, or Scissors.") {
+
+        }
+        else {
+            computerWin++;
+        }
+    }
 }
 
 let playerSelection = "RoCK";
