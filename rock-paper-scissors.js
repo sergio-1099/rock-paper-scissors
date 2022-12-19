@@ -56,6 +56,22 @@ function game() {
     //Declares and initializes score variables
     let playerWin = 0;
     let computerWin = 0;
+    let playerSelection;
+    let computerSelection = getComputerChoice();
+
+    const rockButton = document.querySelector('.rock-button');
+    rockButton.addEventListener('click', function () {
+        playerSelection = 'Rock';
+        console.log(playRound(playerSelection, computerSelection));
+    });
+    const paperButton = document.querySelector('.paper-button');
+    paperButton.addEventListener('click', function () {
+        playerSelection = 'Paper';
+    });
+    const scissorButton = document.querySelector('.scissor-button');
+    scissorButton.addEventListener('click', function () {
+        playerSelection = 'Scissors';
+    });
 
     /*
     //Repeats loop/game 5 times
@@ -83,7 +99,7 @@ function game() {
 
         }
     }
-    */
+    
 
     //Prints final score and displays final message depending on the scores
     console.log(`Final Score:\nUser: ${playerWin}\tComputer: ${computerWin}`);
@@ -96,6 +112,7 @@ function game() {
     else {
         console.log("It's a tie! Wow!");
     }
+    */
 }
 
 
