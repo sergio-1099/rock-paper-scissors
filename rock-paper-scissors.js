@@ -56,7 +56,8 @@ function game() {
     //Declares and initializes score variables
     let playerWin = 0;
     let computerWin = 0;
-    
+
+    /*
     //Repeats loop/game 5 times
     for (let i = 0; i < 5; i++){
         
@@ -82,6 +83,7 @@ function game() {
 
         }
     }
+    */
 
     //Prints final score and displays final message depending on the scores
     console.log(`Final Score:\nUser: ${playerWin}\tComputer: ${computerWin}`);
