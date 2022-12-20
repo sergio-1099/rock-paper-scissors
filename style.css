@@ -33,3 +33,9 @@ body {
     align-items: center;
     gap: 5px;
 }
+
+.selected {
+    scale: 1.1;
+    padding: 20px;
+    border: solid 5px black;
+}

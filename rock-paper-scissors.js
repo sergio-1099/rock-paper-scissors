@@ -67,7 +67,9 @@ function game() {
     forfunction:
     for (let i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener('click', function () {
-            if (playerWin === 5 || computerWin === 5) return;
+            if (playerWin === 5 || computerWin === 5) {
+                return;
+            }
 
             document.querySelector('#player').textContent = playerWin.toString();
             document.querySelector('#computer').textContent = computerWin.toString();
@@ -104,6 +106,8 @@ function game() {
                     endDiv.textContent = 'You lost the game!';
                     gameInfo.appendChild(endDiv);
                 }
+                document.querySelector('.start').classList.remove('selected');
+                document.querySelector('.start').textContent = 'Play!';
             }
         });
     }
@@ -114,6 +118,8 @@ function game() {
 const play = document.querySelector('.start');
 let gameCounter = 0;
 play.addEventListener('click', function () {
+    document.querySelector('.start').classList.add('selected');
+    document.querySelector('.start').textContent = 'Playing!'
     document.querySelector('.player-choice').textContent = ' ';
     document.querySelector('.computer-choice').textContent = ' ';
     document.querySelector('.game-text').textContent = ' ';
