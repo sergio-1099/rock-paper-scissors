@@ -57,6 +57,7 @@ function game() {
     let gameWon = true;
 
     const scoreBoard = document.querySelector('.score-board');
+    const gameInfo = document.querySelector('.gameInfo');
     document.querySelector('#player').innerHTML = playerWin;
     document.querySelector('#computer').innerHTML = computerWin;
 
@@ -91,11 +92,17 @@ function game() {
             document.querySelector('#player').textContent = playerWin.toString();
             document.querySelector('#computer').textContent = computerWin.toString();
 
-            if (playerWin >= 5 || computerWin >= 5) {
+            if (playerWin === 5 || computerWin === 5) {
                 if (playerWin > computerWin) {
-                    console.log("Win!");
-                } else {
-                    console.log("Lose!");
+                    let endDiv = document.createElement('div');
+                    endDiv.classList.add('endDiv');
+                    endDiv.textContent = 'You won the game!';
+                    gameInfo.appendChild(endDiv);
+                } else if (playerWin < computerWin) {
+                    let endDiv = document.createElement('div');
+                    endDiv.classList.add('endDiv');
+                    endDiv.textContent = 'You lost the game!';
+                    gameInfo.appendChild(endDiv);
                 }
             }
         });
@@ -105,10 +112,14 @@ function game() {
 
 //calls the game function
 const play = document.querySelector('.start');
-let won;
+let gameCounter = 0;
 play.addEventListener('click', function () {
     document.querySelector('.player-choice').textContent = ' ';
     document.querySelector('.computer-choice').textContent = ' ';
     document.querySelector('.game-text').textContent = ' ';
+    if (gameCounter >= 1) {
+        document.querySelector('.endDiv').remove();
+    }
     game();
+    gameCounter++;
 });
