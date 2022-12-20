@@ -19,9 +19,10 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
     //Make the player selection case-insensitive
-    playerSelection = playerSelection.toLowerCase();
+    /*playerSelection = playerSelection.toLowerCase();
     let firstLetter = playerSelection.charAt(0).toUpperCase();
     playerSelection = firstLetter + playerSelection.substring(1);
+    */
 
     //Compare playerSelection to computerSelection to determine winner
     let roundWinner;
@@ -58,20 +59,19 @@ function game() {
     let computerWin = 0;
     let playerSelection;
     let computerSelection = getComputerChoice();
+    let roundWinner;
 
-    const rockButton = document.querySelector('.rock-button');
-    rockButton.addEventListener('click', function () {
-        playerSelection = 'Rock';
-        console.log(playRound(playerSelection, computerSelection));
-    });
-    const paperButton = document.querySelector('.paper-button');
-    paperButton.addEventListener('click', function () {
-        playerSelection = 'Paper';
-    });
-    const scissorButton = document.querySelector('.scissor-button');
-    scissorButton.addEventListener('click', function () {
-        playerSelection = 'Scissors';
-    });
+    const buttons = document.querySelectorAll('button');
+
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener('click', function () {
+                playerSelection = buttons[i].textContent;
+                console.log(playRound(playerSelection, computerSelection));
+            }
+        );
+    }
+    
+}
 
     /*
     //Repeats loop/game 5 times
@@ -112,8 +112,9 @@ function game() {
     else {
         console.log("It's a tie! Wow!");
     }
-    */
+    
 }
+*/
 
 
 //calls the game function
