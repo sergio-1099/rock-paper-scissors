@@ -103,12 +103,12 @@ function game() {
                 if (playerWin > computerWin) {
                     let endDiv = document.createElement('div');
                     endDiv.classList.add('endDiv');
-                    endDiv.textContent = 'You won the game!';
+                    endDiv.textContent = 'You won the game! Click "Play!" to play again.';
                     gameInfo.appendChild(endDiv);
                 } else if (playerWin < computerWin) {
                     let endDiv = document.createElement('div');
                     endDiv.classList.add('endDiv');
-                    endDiv.textContent = 'You lost the game!';
+                    endDiv.textContent = 'You lost the game! Click "Play!" to play again.';
                     gameInfo.appendChild(endDiv);
                 }
                 document.querySelector('.start').classList.remove('selected');
