@@ -2,6 +2,13 @@ body {
     background-color: #eae7dc;
 }
 
+.header {
+    margin: 2rem 20%;
+    font-size: 40px;
+    font-weight: bold;
+    color: black;
+}
+
 .score-board {
     border: solid 3px #8e8d8a;
     background: #d8d8d8;
