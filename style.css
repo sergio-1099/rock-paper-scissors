@@ -48,3 +48,36 @@ body {
     padding: 20px;
     border: solid 5px black;
 }
+
+.game-area {
+    display: flex;
+}
+
+#button-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-top: 2rem;
+    margin-left: 20%;
+    padding: 10px;
+    gap: 20px;
+}
+
+.gameInfo {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 500px;
+    flex: 0 1 auto;
+    background-color: #d8d8d8;
+    border: solid 3px #8e8d8a;
+    margin-right: 20%;
+    border-radius: 10px;
+    margin-top: 2rem;
+}
+
+.rock-button, .paper-button, .scissor-button {
+    flex: 1 1 100px;
+    font-size: 30px;
+    border-radius: 10px;
+}
