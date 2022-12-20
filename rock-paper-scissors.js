@@ -54,6 +54,7 @@ function game() {
     let playerSelection;
     let computerSelection;
     let roundWinner;
+    let gameWon = true;
 
     const scoreBoard = document.querySelector('.score-board');
     document.querySelector('#player').innerHTML = playerWin;
@@ -63,32 +64,42 @@ function game() {
 
     const buttons = document.querySelectorAll('button');
 
+    forfunction:
     for (let i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener('click', function () {
-                document.querySelector('#player').textContent = playerWin.toString();
-                document.querySelector('#computer').textContent = computerWin.toString();
-                computerSelection = getComputerChoice()
-                playerSelection = buttons[i].textContent;
-                roundWinner = (playRound(playerSelection, computerSelection));
-                document.querySelector('.player-choice').textContent = `You chose ${playerSelection}`;
-                document.querySelector('.computer-choice').textContent = `Computer chose ${computerSelection}`;
-                document.querySelector('.game-text').textContent = roundWinner.toString();
-
-                if (roundWinner === "You Win! Rock beats Scissors!" || roundWinner === "You Win! Paper beats Rock!" || 
-                roundWinner === "You Win! Scissors beats Paper!") {
-                    ++playerWin;
+            if (playerWin === 5 || computerWin === 5) {
+                if (playerWin > computerWin) {
+                    console.log("Win!");
+                    return gameWon;
+                } else {
+                    console.log("Lose!");
+                    return !gameWon;
                 }
-                else if (roundWinner === "You Lose! Scissors beats Paper!" || roundWinner === "You Lose! Rock beats Scissors!" || 
-                roundWinner === "You Lose! Paper beats Rock!") {
-                    ++computerWin;
-                }
-                else {
-                    console.log("No points!")
-                }
-                document.querySelector('#player').textContent = playerWin.toString();
-                document.querySelector('#computer').textContent = computerWin.toString();
             }
-        );
+
+            document.querySelector('#player').textContent = playerWin.toString();
+            document.querySelector('#computer').textContent = computerWin.toString();
+
+            computerSelection = getComputerChoice()
+            playerSelection = buttons[i].textContent;
+            
+            roundWinner = (playRound(playerSelection, computerSelection));
+            
+            document.querySelector('.player-choice').textContent = `You chose ${playerSelection}`;
+            document.querySelector('.computer-choice').textContent = `Computer chose ${computerSelection}`;
+            document.querySelector('.game-text').textContent = roundWinner.toString();
+
+            if (roundWinner === "You Win! Rock beats Scissors!" || roundWinner === "You Win! Paper beats Rock!" || 
+            roundWinner === "You Win! Scissors beats Paper!") {
+                ++playerWin;
+            }
+            else if (roundWinner === "You Lose! Scissors beats Paper!" || roundWinner === "You Lose! Rock beats Scissors!" || 
+            roundWinner === "You Lose! Paper beats Rock!") {
+                ++computerWin;
+            }
+            document.querySelector('#player').textContent = playerWin.toString();
+            document.querySelector('#computer').textContent = computerWin.toString();
+        });
     }
 }
 
