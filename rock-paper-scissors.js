@@ -71,6 +71,10 @@ function game() {
                 return;
             }
 
+            buttons[i].classList.add('clickTransition');
+            buttons[i].classList.add('selected');
+            buttons[i].addEventListener('transitionend', removeTransition);
+
             document.querySelector('#player').textContent = playerWin.toString();
             document.querySelector('#computer').textContent = computerWin.toString();
 
