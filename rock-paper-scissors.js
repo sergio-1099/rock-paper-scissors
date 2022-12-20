@@ -61,21 +61,12 @@ function game() {
     document.querySelector('#computer').innerHTML = computerWin;
 
 
-
     const buttons = document.querySelectorAll('button');
 
     forfunction:
     for (let i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener('click', function () {
-            if (playerWin === 5 || computerWin === 5) {
-                if (playerWin > computerWin) {
-                    console.log("Win!");
-                    return gameWon;
-                } else {
-                    console.log("Lose!");
-                    return !gameWon;
-                }
-            }
+            if (playerWin === 5 || computerWin === 5) return;
 
             document.querySelector('#player').textContent = playerWin.toString();
             document.querySelector('#computer').textContent = computerWin.toString();
@@ -99,6 +90,14 @@ function game() {
             }
             document.querySelector('#player').textContent = playerWin.toString();
             document.querySelector('#computer').textContent = computerWin.toString();
+
+            if (playerWin >= 5 || computerWin >= 5) {
+                if (playerWin > computerWin) {
+                    console.log("Win!");
+                } else {
+                    console.log("Lose!");
+                }
+            }
         });
     }
 }
@@ -106,6 +105,10 @@ function game() {
 
 //calls the game function
 const play = document.querySelector('.start');
+let won;
 play.addEventListener('click', function () {
+    document.querySelector('.player-choice').textContent = ' ';
+    document.querySelector('.computer-choice').textContent = ' ';
+    document.querySelector('.game-text').textContent = ' ';
     game();
 });
