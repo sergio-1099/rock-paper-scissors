@@ -72,8 +72,9 @@ function game() {
             }
 
             buttons[i].classList.add('clickTransition');
-            buttons[i].classList.add('selected');
+            buttons[i].classList.add('selectedChoice');
             buttons[i].addEventListener('transitionend', removeTransition);
+            buttons[i].addEventListener('transitionend', removeTransition2);
 
             document.querySelector('#player').textContent = playerWin.toString();
             document.querySelector('#computer').textContent = computerWin.toString();
@@ -149,4 +150,9 @@ play.addEventListener('click', function () {
 function removeTransition(e) {
     if (e.propertyName !== 'transform') return;
     this.classList.remove('clickTransition');
+}
+
+function removeTransition2(e) {
+    if (e.propertyName !== 'transform') return;
+    this.classList.remove('selectedChoice');
 }

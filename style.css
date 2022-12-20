@@ -49,6 +49,11 @@ body {
     border: solid 5px black;
 }
 
+.selectedChoice {
+    transition: .07s ease;
+    border: solid 5px black;
+}
+
 .game-area {
     display: flex;
     gap: 30px;
@@ -82,7 +87,7 @@ body {
     font-size: 30px;
     border-radius: 10px;
     background-color: #e85a4f;
-    border: none;
+    padding: 25px;
     color: #eae7dc;
     font-weight: bold;
 }
