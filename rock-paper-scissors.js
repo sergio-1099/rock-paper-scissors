@@ -65,11 +65,14 @@ function game() {
 
     for (let i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener('click', function () {
-                document.querySelector('#player').innerHTML = playerWin;
-                document.querySelector('#computer').innerHTML = computerWin;
+                document.querySelector('#player').textContent = playerWin.toString();
+                document.querySelector('#computer').textContent = computerWin.toString();
                 computerSelection = getComputerChoice()
                 playerSelection = buttons[i].textContent;
                 roundWinner = (playRound(playerSelection, computerSelection));
+                document.querySelector('.player-choice').textContent = `You chose ${playerSelection}`;
+                document.querySelector('.computer-choice').textContent = `Computer chose ${computerSelection}`;
+                document.querySelector('.game-text').textContent = roundWinner.toString();
 
                 if (roundWinner === "You Win! Rock beats Scissors!" || roundWinner === "You Win! Paper beats Rock!" || 
                 roundWinner === "You Win! Scissors beats Paper!") {
@@ -82,12 +85,11 @@ function game() {
                 else {
                     console.log("No points!")
                 }
-                document.querySelector('#player').innerHTML = playerWin;
-                document.querySelector('#computer').innerHTML = computerWin;
+                document.querySelector('#player').textContent = playerWin.toString();
+                document.querySelector('#computer').textContent = computerWin.toString();
             }
         );
     }
-    
 }
 
 
