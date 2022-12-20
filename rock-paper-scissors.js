@@ -18,12 +18,6 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-    //Make the player selection case-insensitive
-    /*playerSelection = playerSelection.toLowerCase();
-    let firstLetter = playerSelection.charAt(0).toUpperCase();
-    playerSelection = firstLetter + playerSelection.substring(1);
-    */
-
     //Compare playerSelection to computerSelection to determine winner
     let roundWinner;
     if (playerSelection === computerSelection) {
@@ -62,76 +56,39 @@ function game() {
     let roundWinner;
 
     const scoreBoard = document.querySelector('.score-board');
+    document.querySelector('#player').innerHTML = playerWin;
+    document.querySelector('#computer').innerHTML = computerWin;
+
+
 
     const buttons = document.querySelectorAll('button');
 
     for (let i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener('click', function () {
-                let playerScore = document.querySelector('#player').innerHTML = playerWin;
-                let computerScore = document.querySelector('#computer').innerHTML = computerWin;
+                document.querySelector('#player').innerHTML = playerWin;
+                document.querySelector('#computer').innerHTML = computerWin;
                 computerSelection = getComputerChoice()
                 playerSelection = buttons[i].textContent;
                 roundWinner = (playRound(playerSelection, computerSelection));
 
                 if (roundWinner === "You Win! Rock beats Scissors!" || roundWinner === "You Win! Paper beats Rock!" || 
                 roundWinner === "You Win! Scissors beats Paper!") {
-                    playerWin++;
+                    ++playerWin;
                 }
                 else if (roundWinner === "You Lose! Scissors beats Paper!" || roundWinner === "You Lose! Rock beats Scissors!" || 
                 roundWinner === "You Lose! Paper beats Rock!") {
-                    computerWin++;
+                    ++computerWin;
                 }
                 else {
                     console.log("No points!")
                 }
+                document.querySelector('#player').innerHTML = playerWin;
+                document.querySelector('#computer').innerHTML = computerWin;
             }
         );
     }
     
 }
-
-    /*
-    //Repeats loop/game 5 times
-    for (let i = 0; i < 5; i++){
-        
-        //Gets user input and generates computer choice
-        let computerSelection = getComputerChoice();
-        let playerSelection = prompt("Choose Rock, Paper, or Scissors:", "");
-
-        //logs the computer's and user's choice 
-        console.log(`You chose ${playerSelection} and the computer chose ${computerSelection}!`);
-
-        //plays a round
-        let roundWinner = playRound(playerSelection, computerSelection);
-        console.log(roundWinner);
-
-        //Checks who won and assigns a point accordingly (no point if tie)
-        if (roundWinner === "You Win! Rock beats Scissors!" || roundWinner === "You Win! Paper beats Rock!" || roundWinner === "You Win! Scissors beats Paper!") {
-            playerWin++;
-        }
-        else if (roundWinner === "You Lose! Scissors beats Paper!" || roundWinner === "You Lose! Rock beats Scissors!" || roundWinner === "You Lose! Paper beats Rock!") {
-            computerWin++;
-        }
-        else {
-
-        }
-    }
-    
-
-    //Prints final score and displays final message depending on the scores
-    console.log(`Final Score:\nUser: ${playerWin}\tComputer: ${computerWin}`);
-    if (playerWin > computerWin) {
-        console.log("You win the game!");
-    }
-    else if (playerWin < computerWin) {
-        console.log("You lose the game!");
-    }
-    else {
-        console.log("It's a tie! Wow!");
-    }
-    
-}
-*/
 
 
 //calls the game function
