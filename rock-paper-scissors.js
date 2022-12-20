@@ -66,7 +66,19 @@ function game() {
     for (let i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener('click', function () {
                 playerSelection = buttons[i].textContent;
-                console.log(playRound(playerSelection, computerSelection));
+                roundWinner = (playRound(playerSelection, computerSelection));
+
+                if (roundWinner === "You Win! Rock beats Scissors!" || roundWinner === "You Win! Paper beats Rock!" || 
+                roundWinner === "You Win! Scissors beats Paper!") {
+                    playerWin++;
+                }
+                else if (roundWinner === "You Lose! Scissors beats Paper!" || roundWinner === "You Lose! Rock beats Scissors!" || 
+                roundWinner === "You Lose! Paper beats Rock!") {
+                    computerWin++;
+                }
+                else {
+                    console.log("No points!")
+                }
             }
         );
     }
