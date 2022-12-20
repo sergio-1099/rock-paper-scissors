@@ -117,15 +117,32 @@ function game() {
 //calls the game function
 const play = document.querySelector('.start');
 let gameCounter = 0;
+const startButton = document.querySelector('.start');
+const playerChoice = document.querySelector('.player-choice');
+const computerChoice = document.querySelector('.computer-choice');
+const gameText = document.querySelector('.game-text');
+
 play.addEventListener('click', function () {
-    document.querySelector('.start').classList.add('selected');
-    document.querySelector('.start').textContent = 'Playing!'
-    document.querySelector('.player-choice').textContent = ' ';
-    document.querySelector('.computer-choice').textContent = ' ';
-    document.querySelector('.game-text').textContent = ' ';
+    startButton.classList.add('clickTransition');
+    startButton.classList.add('selected');
+    startButton.addEventListener('transitionend', removeTransition);
+    startButton.textContent = 'Playing!'
+
+    playerChoice.textContent = ' ';
+    computerChoice.textContent = ' ';
+    gameText.textContent = ' ';
+    
     if (gameCounter >= 1) {
         document.querySelector('.endDiv').remove();
+        document.querySelector('.start').classList.remove('endTransition');
     }
+    
     game();
+    
     gameCounter++;
 });
+
+function removeTransition(e) {
+    if (e.propertyName !== 'transform') return;
+    this.classList.remove('clickTransition');
+}
