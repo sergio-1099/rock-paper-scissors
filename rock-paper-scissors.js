@@ -105,4 +105,7 @@ function game() {
 
 
 //calls the game function
-game();
+const play = document.querySelector('.start');
+play.addEventListener('click', function () {
+    game();
+});
