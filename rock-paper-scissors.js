@@ -58,13 +58,18 @@ function game() {
     let playerWin = 0;
     let computerWin = 0;
     let playerSelection;
-    let computerSelection = getComputerChoice();
+    let computerSelection;
     let roundWinner;
+
+    const scoreBoard = document.querySelector('.score-board');
 
     const buttons = document.querySelectorAll('button');
 
     for (let i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener('click', function () {
+                let playerScore = document.querySelector('#player').innerHTML = playerWin;
+                let computerScore = document.querySelector('#computer').innerHTML = computerWin;
+                computerSelection = getComputerChoice()
                 playerSelection = buttons[i].textContent;
                 roundWinner = (playRound(playerSelection, computerSelection));
 
