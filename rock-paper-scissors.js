@@ -54,7 +54,6 @@ function game() {
     let playerSelection;
     let computerSelection;
     let roundWinner;
-    let gameWon = true;
 
     const scoreBoard = document.querySelector('.score-board');
     const gameInfo = document.querySelector('.gameInfo');
@@ -64,6 +63,7 @@ function game() {
 
 
     const buttons = document.querySelectorAll('.pButton');
+    const computerButtons = document.querySelectorAll('.cButton');
 
     forfunction:
     for (let i = 0; i < buttons.length; i++) {
@@ -82,6 +82,22 @@ function game() {
 
             computerSelection = getComputerChoice()
             playerSelection = buttons[i].textContent;
+
+            let computerIndex;
+            if (computerSelection === 'Rock') {
+                computerIndex = 0;
+            }
+            else if (computerSelection === 'Paper') {
+                computerIndex = 1;
+            }
+            else {
+                computerIndex = 2;
+            }
+            
+            computerButtons[computerIndex].classList.add('clickTransition');
+            computerButtons[computerIndex].classList.add('selectedChoice');
+            computerButtons[computerIndex].addEventListener('transitionend', removeTransition);
+            computerButtons[computerIndex].addEventListener('transitionend', removeTransition2);
             
             roundWinner = (playRound(playerSelection, computerSelection));
             
