@@ -58,6 +58,7 @@ function game() {
 
     const scoreBoard = document.querySelector('.score-board');
     const gameInfo = document.querySelector('.gameInfo');
+    const gameInfoText = document.querySelector('.gameInfo .text');
     document.querySelector('#player').innerHTML = playerWin;
     document.querySelector('#computer').innerHTML = computerWin;
 
@@ -104,12 +105,12 @@ function game() {
                     let endDiv = document.createElement('div');
                     endDiv.classList.add('endDiv');
                     endDiv.textContent = 'You won the game! Click "Play!" to play again.';
-                    gameInfo.appendChild(endDiv);
+                    gameInfoText.appendChild(endDiv);
                 } else if (playerWin < computerWin) {
                     let endDiv = document.createElement('div');
                     endDiv.classList.add('endDiv');
                     endDiv.textContent = 'You lost the game! Click "Play!" to play again.';
-                    gameInfo.appendChild(endDiv);
+                    gameInfoText.appendChild(endDiv);
                 }
                 document.querySelector('.start').classList.remove('selected');
                 document.querySelector('.start').textContent = 'Play!';
