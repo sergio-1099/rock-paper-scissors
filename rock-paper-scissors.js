@@ -54,6 +54,8 @@ function game() {
     let playerSelection;
     let computerSelection;
     let roundWinner;
+    let computerIndex;
+    let playerIndex;
 
     const scoreBoard = document.querySelector('.score-board');
     const gameInfo = document.querySelector('.gameInfo');
@@ -68,6 +70,10 @@ function game() {
     forfunction:
     for (let i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener('click', function () {
+            if (roundWinner) {
+                computerButtons[computerIndex].classList.remove('selectedChoice');
+                buttons[playerIndex].classList.remove('selectedChoice');
+            }
             if (playerWin === 5 || computerWin === 5) {
                 return;
             }
@@ -75,15 +81,14 @@ function game() {
             buttons[i].classList.add('clickTransition');
             buttons[i].classList.add('selectedChoice');
             buttons[i].addEventListener('transitionend', removeTransition);
-            buttons[i].addEventListener('transitionend', removeTransition2);
 
             document.querySelector('#player').textContent = playerWin.toString();
             document.querySelector('#computer').textContent = computerWin.toString();
 
             computerSelection = getComputerChoice()
             playerSelection = buttons[i].textContent;
+            playerIndex = i;
 
-            let computerIndex;
             if (computerSelection === 'Rock') {
                 computerIndex = 0;
             }
@@ -97,7 +102,6 @@ function game() {
             computerButtons[computerIndex].classList.add('clickTransition');
             computerButtons[computerIndex].classList.add('selectedChoice');
             computerButtons[computerIndex].addEventListener('transitionend', removeTransition);
-            computerButtons[computerIndex].addEventListener('transitionend', removeTransition2);
             
             roundWinner = (playRound(playerSelection, computerSelection));
             
@@ -143,6 +147,8 @@ const startButton = document.querySelector('.start');
 const playerChoice = document.querySelector('.player-choice');
 const computerChoice = document.querySelector('.computer-choice');
 const gameText = document.querySelector('.game-text');
+const playerButtons = document.querySelectorAll('.pButton');
+const compButtons = document.querySelectorAll('.cButton');
 
 play.addEventListener('click', function () {
     startButton.classList.add('clickTransition');
@@ -157,6 +163,10 @@ play.addEventListener('click', function () {
     if (gameCounter >= 1) {
         document.querySelector('.endDiv').remove();
         document.querySelector('.start').classList.remove('endTransition');
+        for (let i = 0; i < playerButtons.length; i++) {
+            playerButtons[i].classList.remove('selectedChoice')
+            compButtons[i].classList.remove('selectedChoice');
+        }
     }
     
     game();
