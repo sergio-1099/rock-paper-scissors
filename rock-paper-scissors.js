@@ -63,7 +63,7 @@ function game() {
     document.querySelector('#computer').innerHTML = computerWin;
 
 
-    const buttons = document.querySelectorAll('button');
+    const buttons = document.querySelectorAll('.pButton');
 
     forfunction:
     for (let i = 0; i < buttons.length; i++) {
